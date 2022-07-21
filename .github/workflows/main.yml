@@ -30,6 +30,22 @@ jobs:
     needs: [build]
     runs-on: ubuntu-18.04
     steps:
+      - name: Set CUSTOM_STATUS Env Variable
+        run: |
+          if [ "${{ needs.build.result }}" = "failure" ] || \
+             [ "${{ needs.build.result }}" = "failure" ];
+          then
+            CUSTOM_STATUS="❌ 실패"
+          elif [ "${{ needs.build.result }}" = "cancelled" ] || \
+            [ "${{ needs.build.result }}" = "cancelled" ];
+          then
+            CUSTOM_STATUS="⚠️ 취소"
+          else
+            CUSTOM_STATUS="✅ 성공"
+          fi
+          
+          echo "CUSTOM_STATUS=${CUSTOM_STATUS}" >> $GITHUB_ENV
+          
       - name: slack-send
         uses: slackapi/slack-github-action@v1.19.0
         with:
