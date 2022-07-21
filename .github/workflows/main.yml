@@ -25,3 +25,13 @@ jobs:
           AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
         run:
           aws s3 cp --recursive --region ap-northeast-2 config s3://leo-git-repo
+  slack-notification:
+    if: ${{ always() }}
+    needs: [build]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.19.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          ACTION_RUN_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
