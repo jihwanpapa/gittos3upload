@@ -12,11 +12,11 @@ jobs:
       - name: git clone
         uses: actions/checkout@v2
    
-      - name: npm install
-        run: npm install
+     # - name: npm install
+     #   run: npm install
    
-      - name: npm build
-        run: npm run build
+     # - name: npm build
+     #   run: npm run build
    
       - name: deploy
         env:
