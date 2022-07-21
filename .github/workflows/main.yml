@@ -47,19 +47,9 @@ jobs:
           echo "CUSTOM_STATUS=${CUSTOM_STATUS}" >> $GITHUB_ENV
           
       - name: slack-send
-        uses: slackapi/slack-github-action@v1.19.0
-        with:
-          payload: |
-            {
-              "custom_status": "${{ env.CUSTOM_STATUS }}",
-              "workflow": "${{ github.workflow }}",
-              "job_deploy": "deploy",
-              "status_deploy": "${{ needs.build.result }}",
-              "actor": "${{ github.actor }}",
-              "ref_name": "${{ github.ref_name }}",
-              "head_commit_url": "${{ github.event.head_commit.url }}",
-              "action_run_url": "${{ env.ACTION_RUN_URL }}"
-            }
+        uses: rtCamp/action-slack-notify@v2
         env:
+          SLACK_MESSAGE: 'Confit upload complate'
+          SLACK_TITLE: 'github action msg'
+          SLACK_USERNAME: Leocom
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          ACTION_RUN_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
