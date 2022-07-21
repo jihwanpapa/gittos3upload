@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="1 minutes">
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger{35}] - %msg%n</pattern>
+		</encoder>
+	</appender>	
+
+	<!-- EXT 처리 Appender --> 
+	<appender name="EXT_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <file>/log/cmn/service/${POD_NAME}-ext.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+	        <fileNamePattern>/log/cmn/service/${POD_NAME}-ext.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}\t%msg%n</pattern>
+	        <!-- <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern> -->
+	    </encoder>
+	</appender>
+	
+	<!-- DSP 처리 Appender --> 
+	<appender name="DSP_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <file>/log/cmn/service/${POD_NAME}-dsp.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+	        <fileNamePattern>/log/cmn/service/${POD_NAME}-dsp.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}\t%msg%n</pattern>
+	        <!-- <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern> -->
+	    </encoder>
+	</appender>
+		
+	<!-- PUSH 처리 Appender --> 
+	<appender name="PUSH_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <file>/log/cmn/service/${POD_NAME}-push.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+	        <fileNamePattern>/log/cmn/service/${POD_NAME}-push.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}\t%msg%n</pattern>
+	        <!-- <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern> -->
+	    </encoder>
+	</appender>
+	
+	<!-- UPDATE BANNER 처리 Appender --> 
+	<appender name="UPDBNR_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <file>/log/cmn/service/${POD_NAME}-updbnr_CMN.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+	        <fileNamePattern>/log/cmn/service/${POD_NAME}-updbnr_CMN.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}\t%msg%n</pattern>
+	    </encoder>
+	</appender>
+
+	<!-- AMS 처리 Appender --> 
+	<appender name="AMS_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <file>/log/cmn/service/${POD_NAME}-service.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+			<fileNamePattern>/log/cmn/service/${POD_NAME}-service.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+	    </encoder>
+	</appender>
+	
+	<!-- AMS 처리 Appender --> 
+	<appender name="BSS_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <file>/log/cmn/bss/${POD_NAME}-bss.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+	        <fileNamePattern>/log/cmn/bss/${POD_NAME}-bss.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+	    </encoder>
+	</appender>
+	
+	<!-- CSV 처리 Appender --> 
+	<appender name="CSV_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+	        <fileNamePattern>/log/cmn/retention/${POD_NAME}-retention-%d{yyyy-MM-dd}.%i.csv</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <layout class="com.samsung.contents.gl.cmn.util.RetentionPatternLayout">
+	    	<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS},%msg%n</pattern>	     
+	    </layout>
+	</appender>	
+
+	<!-- Kafka Appender --> 
+	<appender name="KAFKA_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+		 <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			 <!-- daily rollover -->
+			 <fileNamePattern>/log/cmn/service/${POD_NAME}-kafka.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			 <timeBasedFileNamingAndTriggeringPolicy
+				   class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+			   <!-- or whenever the file size reaches 500MB -->
+			   <maxFileSize>500MB</maxFileSize>
+			 </timeBasedFileNamingAndTriggeringPolicy>
+		 </rollingPolicy>
+		 <encoder>
+			 <pattern>>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		 </encoder>
+	</appender>
+	<!-- Location 처리 Appender --> 
+	<appender name="LOCATION_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+	    <file>/log/cmn/service/${POD_NAME}-location.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- daily rollover -->
+	        <fileNamePattern>/log/cmn/service/${POD_NAME}-location.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy
+	              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	          <!-- or whenever the file size reaches 500MB -->
+	          <maxFileSize>500MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}\t%msg%n</pattern>
+	    </encoder>
+	</appender>
+	
+	<!-- BSS Logger -->
+	<logger name="BSS_LOG" level="ERROR">
+		<appender-ref ref="BSS_APPENDER" />		
+	</logger>
+	<logger name="DSP_LOG" level="INFO">
+		<appender-ref ref="DSP_APPENDER" />
+	</logger>
+	<logger name="EXT_LOG" level="INFO">
+		<appender-ref ref="EXT_APPENDER" />
+	</logger>
+	<logger name="PUSH_LOG" level="INFO">
+		<appender-ref ref="PUSH_APPENDER" />
+	</logger>
+	<logger name="UPDBNR_LOG" level="INFO">
+		<appender-ref ref="UPDBNR_APPENDER" />
+	</logger>
+	
+	<!-- DORMANT Logger -->
+	<logger name="DORMANT_LOG" level="INFO" additivity="false">
+		<appender-ref ref="CSV_APPENDER" />
+	</logger>
+	<logger name="LOCATION_LOG" level="INFO">
+		<appender-ref ref="LOCATION_APPENDER" />
+	</logger>
+					
+	<!-- Service -->
+	<if condition='property("envTarget").startsWith("prd_kr") || property("envTarget").startsWith("prd_us") || property("envTarget").startsWith("preprd_us") || property("envTarget").startsWith("preprd_cn") || property("envTarget").startsWith("prd_cn")'>
+	    <then>
+			<!-- CDF Logger -->
+			<logger name="com.samsung.cdf" level="ERROR" />
+			
+			<!-- Debug Logger -->
+			<logger name="com.samsung.contents" level="ERROR" />
+			
+			<!-- MyBatis -->
+			<logger name="org.mybatis" level="ERROR" />
+			
+			<!-- Spring Framework -->
+			<logger name="org.springframework" level="ERROR" />
+			<logger name="org.springframework.core" level="ERROR" />
+			<logger name="org.springframework.beans" level="ERROR" />
+			<logger name="org.springframework.context" level="ERROR" />
+			<logger name="org.springframework.web" level="ERROR" />
+			
+			<!-- HttpClient -->
+			<logger name="httpclient.wire.content" level="OFF"/>  
+    		<logger name="httpclient.wire.header" level="OFF"/>
+			
+			<!-- Kafka -->
+    		<logger name="org.apache.kafka" level="ERROR" additivity="false">
+    			<appender-ref ref="KAFKA_APPENDER" />
+    		</logger>
+		</then>
+		<else>
+			<!-- CDF Logger -->
+			<logger name="com.samsung.cdf" level="DEBUG" />
+			
+			<!-- Debug Logger -->
+			<logger name="com.samsung.contents" level="DEBUG" />
+			
+			<!-- MyBatis -->
+			<logger name="org.mybatis" level="DEBUG" />
+			
+			<!-- Spring Framework -->
+			<logger name="org.springframework" level="INFO" />
+			<logger name="org.springframework.core" level="INFO" />
+			<logger name="org.springframework.beans" level="INFO" />
+			<logger name="org.springframework.context" level="INFO" />
+			<logger name="org.springframework.web" level="INFO" />
+			
+			<!-- HttpClient -->
+			<logger name="httpclient.wire.content" level="OFF"/>  
+    		<logger name="httpclient.wire.header" level="OFF"/>
+			
+			<!-- Kafka -->
+    		<logger name="org.apache.kafka" level="ERROR" additivity="false">
+    			<appender-ref ref="KAFKA_APPENDER" />
+    		</logger>
+		</else>
+	</if>
+	
+	<if condition='property("envTarget").contains("local")'>
+		<then>
+			<root level="DEBUG">
+				<appender-ref ref="STDOUT" />
+			</root>
+		</then>
+		<else>
+			<if condition='property("envTarget").startsWith("prd_kr") || property("envTarget").startsWith("prd_us") || property("envTarget").startsWith("preprd_us") || property("envTarget").startsWith("preprd_cn") || property("envTarget").startsWith("prd_cn")'>
+				<then>
+					<root level="ERROR">
+						<appender-ref ref="AMS_APPENDER" />	
+					</root>
+				</then>
+				<else>
+					<root level="DEBUG">
+						<appender-ref ref="AMS_APPENDER" />	
+					</root>
+				</else>
+			</if>
+		</else>
+	</if>
+</configuration>
