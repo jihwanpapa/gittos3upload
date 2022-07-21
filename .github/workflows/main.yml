@@ -6,7 +6,7 @@ on:
       - main
    
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-18.04
     steps:
       - name: git clone
@@ -20,7 +20,7 @@ jobs:
    
       - name: deploy
         env:
-          AWS_ACCESS_KEY_ID: '$'
-          AWS_SECRET_ACCESS_KEY: '$'
+          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
         run:
-          aws s3 cp --recursive --region ap-northeast-2 dist s3://leo-git-repo
+          aws s3 cp --recursive --region ap-northeast-2 config s3://leo-git-repo
