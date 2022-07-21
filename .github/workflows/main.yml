@@ -35,4 +35,4 @@ jobs:
         env:
           SLACK_MESSAGE: 'Confit upload complate'
           SLACK_TITLE: 'github action msg'
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
