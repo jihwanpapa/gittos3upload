@@ -1,8 +1,6 @@
 name: Main CI
    
 on:
-  push:
-    branches: [ "release" ]
   pull_request:
     branches: [ "release" ]
    
@@ -12,12 +10,6 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v2
-   
-     # - name: npm install
-     #   run: npm install
-   
-     # - name: npm build
-     #   run: npm run build
    
       - name: deploy
         env:
@@ -33,6 +25,6 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_MESSAGE: 'Confit upload complate'
+          SLACK_MESSAGE: 'Config upload complate'
           SLACK_TITLE: 'github action msg'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
